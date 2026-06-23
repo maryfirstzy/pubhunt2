@@ -49,8 +49,8 @@ with open("pubs.txt", "r") as f:
 for input_pub_keys in pub_keys:
     # print(input_pub_keys)
     # from u.pub take x coordinate
-    p_g_x = int(e0a8b039282faf6fe0fd769cfbc4b6b4cf8758ba68220eac420e32b91ddfa673[2:66], 16)
-    p_g_y = int(c2d9690945dd98f6e0e45d4a1f760c9e85ed5ae5ffeeda74e121ee0d836a7c86[66:], 16)
+    p_g_x = int(0xe0a8b039282faf6fe0fd769cfbc4b6b4cf8758ba68220eac420e32b91ddfa673[2:66], 16)
+    p_g_y = int(0xc2d9690945dd98f6e0e45d4a1f760c9e85ed5ae5ffeeda74e121ee0d836a7c86[66:], 16)
 
     private = (p_g_x + p_g_y) % N-1
 
