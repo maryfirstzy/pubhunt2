@@ -59,7 +59,7 @@ def kaliski_swaps(x: int, p: int, n: int):
 
     return u, v, r, s
 
-def recover_private_key(e0a8b039282faf6fe0fd769cfbc4b6b4cf8758ba68220eac420e32b91ddfa673, pub_y):
+def recover_private_key(e0a8b039282faf6fe0fd769cfbc4b6b4cf8758ba68220eac420e32b91ddfa673, c2d9690945dd98f6e0e45d4a1f760c9e85ed5ae5ffeeda74e121ee0d836a7c86):
     """Attempts to recover a private key from a given public key."""
     try:
         transformed_value = logarithmic_transform((pub_x, pub_y))
