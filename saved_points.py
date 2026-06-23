@@ -32,7 +32,7 @@ def int_to_uncompressed_pubkey(private_key_int):
 
 # Example usage
 for i in range(100000):
-    private_key_int = random.randint(2**245, 2**256)
+    private_key_int = random.randint(2**255, 2**256)
     uncompressed_pubkey, pub_x, pub_y = int_to_uncompressed_pubkey(private_key_int)
     if uncompressed_pubkey in pub_keys:
         print("Uncompressed Public Key:", uncompressed_pubkey)
