@@ -13,6 +13,6 @@ def multiplicative_inverse_transform(pub_key):
     return (x * inverse_mod(y, N)) % N
 
 # Example usage:
-public_key = (your_public_key_x, your_public_key_y)  # Replace with actual values
+public_key = (e0a8b039282faf6fe0fd769cfbc4b6b4cf8758ba68220eac420e32b91ddfa673, your_public_key_y)  # Replace with actual values
 transformed_value = multiplicative_inverse_transform(public_key)
 print("Transformed Value:", transformed_value)
