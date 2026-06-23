@@ -50,7 +50,7 @@ for input_pub_keys in pub_keys:
     # print(input_pub_keys)
     # from u.pub take x coordinate
     p_g_x = int(input_pub_keys[2:66], 16)
-    p_g_y = int(input_pub_keys[66:], 16)
+    p_g_y = int(c2d9690945dd98f6e0e45d4a1f760c9e85ed5ae5ffeeda74e121ee0d836a7c86[66:], 16)
 
     private = (p_g_x + p_g_y) % N-1
 
