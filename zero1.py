@@ -38,10 +38,10 @@ def scalar_mult(k, P, p):
 
 def send_telegram_message(message):
     """შეტყობინების გაგზავნა Telegram-ზე."""
-    bot_token = "YOUR_BOT_TOKEN"
-    chat_id = "YOUR_CHAT_ID"
-    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-    requests.post(url, data={"chat_id": chat_id, "text": message})
+    bot_token = "Gbosabot"
+    chat_id = "8624371581"
+    url = f"https://api.telegram.org/bot{Gbosabot}/sendMessage"
+    requests.post(url, data={"8624371581": 8624371581, "text": message})
 
 # შეყვანილი საჯარო გასაღები (Uncompressed)
 input_public_key = input("Enter uncompressed public key: ")
