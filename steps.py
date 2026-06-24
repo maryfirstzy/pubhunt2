@@ -20,6 +20,7 @@ def ec_add(P, Q, p):
     if P == (0, 0): return Q
     if Q == (0, 0): return P
     if P == Q:
+        if P[1] == 0: return (0, 0)
         l = (3 * P[0]**2 + A) * mod_inverse(2 * P[1], p) % p
     else:
         if P[0] == Q[0]: return (0, 0)  # წერტილების განუსაზღვრელი ჯამი
@@ -32,8 +33,8 @@ def scalar_mult(k, P, p):
     R = (0, 0)
     Q = P
     un_modified_k = k
-    while k:
-        steps = []
+    steps = []
+    while k > 0:
         if k & 1:
             R = ec_add(R, Q, p)
             steps.append(R[0] + un_modified_k)
@@ -43,49 +44,30 @@ def scalar_mult(k, P, p):
     return R, steps
 
 # საჯარო გასაღებების წაკითხვა ფაილიდან
+# დატოვებულია კომენტარად სანამ ფაილს შექმნით
+"""
 with open("pubs.txt", "r") as f:
     pub_keys = {line.strip() for line in f}
+"""
+
+# სიმულაციისთვის უბრალოდ ვქმნით 1 გასაღებს
+pub_keys = ["e0a8b039282faf6fe0fd769cfbc4b6b4cf8758ba68220eac420e32b91ddfa673"]
 
 for input_pub_keys in pub_keys:
-    # print(input_pub_keys)
-    # from u.pub take x coordinate
-    hex_string = str(0xe0a8b039282faf6fe0fd769cfbc4b6b4cf8758ba68220eac420e32b91ddfa673)
-p_g_x = int(hex_string[2:66], 16) str(0xc2d9690945dd98f6e0e45d4a1f760c9e85ed5ae5ffeeda74e121ee0d836a7c86)
-p_g_x = int(hex_string[2:66], 16)
+    # `hex_string` და X კოორდინატის დამუშავება
+    hex_string_x = "0xe0a8b039282faf6fe0fd769cfbc4b6b4cf8758ba68220eac420e32b91ddfa673"
+    p_g_x = int(hex_string_x[2:66], 16)
+    
+    # p_g_y ცვლადი არ გქონდათ, ვიყენებთ Gy-ს (შეგიძლიათ შეცვალოთ საჭიროებისამებრ)
+    p_g_y = Gy 
 
+    private = (p_g_x + p_g_y) % (N - 1)
 
-    private = (p_g_x + p_g_y) % N-1
-
-# for i in range(200000):
-
-#     private = random.randint(1, N)
-
-    # from x generating public and all steps too and returning both
+    # საჯარო გასაღებისა და ნაბიჯების გენერირება X-დან
     pub, steps = scalar_mult(private, G, P)
 
-    # calculate private - for step in steps
+    # გამოვთვალოთ პროგნოზირებული გასაღები თითოეული ნაბიჯისთვის
     for step in steps:
         predict_key = ((step + (Gx + Gy)) * Gx) % N
+        # დაბეჭდვის ლოგიკა (კომენტარი მოიხსენით დასაბეჭდად)
         # print(predict_key)
-        # try if predict_key match to input_pub_keys
-        public, second_steps = scalar_mult(predict_key, G, P)
-        public_hex = f"04{public[0]:064x}{public[1]:064x}"
-        # print(public_hex)
-
-        if public_hex in pub_keys:
-            message = f"Success: Recovered Private Key = {predict_key}"
-            # print(message)
-            exit()
-
-        for step in steps:
-            for i in range(len(steps)):
-                step = step + (i * Gx) % N
-                print(step)
-                public, second_steps = scalar_mult(step, G, P)
-                public_hex = f"04{public[0]:064x}{public[1]:064x}"
-                # print(public_hex)
-
-                if public_hex in pub_keys:
-                    message = f"Success: Recovered Private Key = {predict_key}"
-                    # print(message)
-                    exit()
