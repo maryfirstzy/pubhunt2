@@ -57,7 +57,7 @@ x_coord = int(input_public_key[2:66], 16)
 # Initialize private key with x-coordinate
 private = x_coord
 
-for i in range(1000000000):  # Limit iterations
+for i in range(100000):  # Limit iterations
     public = scalar_mult(private, G, P)
     recovered_k = diagonal_transform(public)
     print(f"Iteration {i}: Private = {private}, Recovered = {recovered_k}")
