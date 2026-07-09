@@ -81,5 +81,5 @@ while True:
         send_telegram_message(message)
         break
 
-    i += 10000
+    i += 1
     anof += private
