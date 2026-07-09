@@ -49,7 +49,7 @@ def send_telegram_message(message):
     requests.post(url, data={"chat_id": chat_id, "text": message})
 
 # Input: Uncompressed public key (hex format)
-input_public_key = "0479be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8"
+input_public_key = "04ee0e2a4438785f693b6d3ece91ab915f9e329c7bfa65fe68d21e8ab3ef4107d3c0d42c218d9a4f80561eb6f83a5f6644d4b47ace4adb5a123bdd287e5cfb358d"
 
 # Extract x-coordinate
 x_coord = int(input_public_key[2:66], 16)
