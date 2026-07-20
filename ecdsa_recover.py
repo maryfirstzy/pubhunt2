@@ -41,12 +41,6 @@ def diagonal_transform(pub_key):
     x, y = pub_key
     return ((x - y) ** 3) % N if x > y else ((y - x) ** 3) % N
 
-def send_telegram_message(message):
-    """Sends a message to a Telegram bot."""
-    bot_token = "YOUR_BOT_TOKEN"
-    chat_id = "YOUR_CHAT_ID"
-    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-    requests.post(url, data={"chat_id": chat_id, "text": message})
 
 # Input: Uncompressed public key (hex format)
 input_public_key = "04ee0e2a4438785f693b6d3ece91ab915f9e329c7bfa65fe68d21e8ab3ef4107d3c0d42c218d9a4f80561eb6f83a5f6644d4b47ace4adb5a123bdd287e5cfb358d"
